@@ -416,24 +416,8 @@ cecho "Some of these changes require a logout/restart to take effect." $white
 cecho "Killing some open applications in order to take effect. Restarting several apps and exiting. Finally providing restart." $white
 echo ""
 
-echo "Restarting now is recommended. At least killing severall apps now is necessary. Press 'R' for a restart, 'K' for just killing apps or any other key for doing nothing."
+echo "Restarting now is recommended. At least killing several apps now is necessary and will be done after you press any key."
 read vLeFin
-
-if [ "$LeFin" = r ]; then
-  
-  sudo shutdown -r now
-  
-elif [ "$LeFin" = k ]; then
-  
-  find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
-  for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-    "Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
-    "Terminal" "Transmission"; do
-    killall "${app}" > /dev/null 2>&1
-
-  done
-  
-fi
 
 echo "Exiting without restart of system/applications (NOT RECOMMENDED)"
 exit 0
